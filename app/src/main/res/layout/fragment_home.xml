@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".presentation.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/imBtnBalance"
+            android:layout_width="325dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/button_with_circular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAccountOverview"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_services"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="6dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvServices"
+            app:layout_constraintTop_toBottomOf="@+id/tvServices"
+            app:layout_constraintVertical_bias="0.0"
+            app:spanCount="4"
+            tools:listitem="@layout/service_item" />
+
+        <ImageView
+            android:id="@+id/imLogoHome"
+            android:layout_width="47dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="303dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imNameHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="82dp"
+            android:layout_marginEnd="203dp"
+            android:src="@drawable/ic_ewalle"
+            app:layout_constraintBottom_toBottomOf="@+id/imLogoHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imLogoHome" />
+
+        <ImageView
+            android:id="@+id/imDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="37dp"
+            android:src="@drawable/ic_union"
+            app:layout_constraintBottom_toBottomOf="@+id/imNameHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imNameHome" />
+
+        <ImageView
+            android:id="@+id/imScanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="207dp"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/ic_scanner"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSendMoney"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSendMoney"
+            app:layout_constraintTop_toTopOf="@+id/tvSendMoney" />
+
+        <ImageView
+            android:id="@+id/imVector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="207dp"
+            android:src="@drawable/ic_vector"
+            app:layout_constraintBottom_toBottomOf="@+id/tvServices"
+            app:layout_constraintEnd_toEndOf="@+id/imScanner"
+            app:layout_constraintTop_toTopOf="@+id/tvServices" />
+
+        <TextView
+            android:id="@+id/tvAccountOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="112dp"
+            android:layout_marginEnd="213dp"
+            android:text="@string/account_overview"
+            android:textColor="@color/dark_blue"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSendMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="256dp"
+            android:text="@string/send_money"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imBtnBalance" />
+
+        <TextView
+            android:id="@+id/tvServices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:text="@string/services"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvSendMoney"
+            app:layout_constraintTop_toBottomOf="@+id/floatingActionButton3" />
+
+        <TextView
+            android:id="@+id/tvBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/balance_example"
+            android:textColor="@color/color_on_primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/imBtnBalance"
+            app:layout_constraintTop_toTopOf="@+id/imBtnBalance" />
+
+        <TextView
+            android:id="@+id/tvCurrentBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/current_balance"
+            android:textColor="@color/dark_blue"
+            app:layout_constraintStart_toStartOf="@+id/tvBalance"
+            app:layout_constraintTop_toBottomOf="@+id/tvBalance" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_person"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/floatingActionButton3"
+            app:layout_constraintTop_toBottomOf="@+id/tvSendMoney"
+            tools:listitem="@layout/person_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButtonIntoBtnBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="#FFAC30"
+            app:layout_constraintBottom_toBottomOf="@+id/imBtnBalance"
+            app:layout_constraintEnd_toEndOf="@+id/imBtnBalance"
+            app:layout_constraintTop_toTopOf="@+id/imBtnBalance"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="#FFAC30"
+            app:layout_constraintStart_toStartOf="@+id/tvSendMoney"
+            app:layout_constraintTop_toBottomOf="@+id/tvSendMoney"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

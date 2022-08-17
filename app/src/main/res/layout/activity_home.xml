@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:background="@color/main_text_color"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:backgroundTint="@color/background_color"
+tools:context=".presentation.HomeActivity"
+android:id="@+id/draver">
+
+
+<FrameLayout
+    android:id="@+id/fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</FrameLayout>
+
+<com.google.android.material.navigation.NavigationView
+    android:id="@+id/nav_view"
+    android:background="@color/button_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="-65dp"
+    android:layout_marginRight="-65dp"
+    android:fitsSystemWindows="true"
+    android:layout_gravity="start"
+    app:menu="@menu/draver_home_menu"
+    app:headerLayout="@layout/header_home_menu">
+
+    <include layout="@layout/footer_home_menu"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom"/>
+
+
+
+</com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

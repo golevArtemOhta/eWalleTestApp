@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">eWalle</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time_example">06:20 PM</string>
+    <string name="date_example">Nov.10.2020 | Wednesday</string>
+    <string name="weather">34 °C</string>
+    <string name="ewalle">eWalle</string>
+    <string name="textInfo">Open An Account For Digital\nE-Wallet Solutions.Instant\nPayouts.\n\nJoin For Free</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="account_overview">Account Overview</string>
+    <string name="send_money">Send Money</string>
+    <string name="services">Services</string>
+    <string name="balance_example">20,600</string>
+    <string name="current_balance">Current balance</string>
+    <string name="name_example_draver">Carol Black</string>
+    <string name="city_example_draver">Seattle, Washington</string>
+    <string name="home">Home</string>
+    <string name="logout">Logout</string>
+    <string name="version_2_0_1">Version 2.0.1</string>
+    <string name="profile">Profile</string>
+    <string name="accounts">Accounts</string>
+    <string name="transactions">Transactions</string>
+    <string name="stats">Stats</string>
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="send">Send</string>
+    <string name="enter_the_amount">Enter the amount</string>
+    <string name="enter_the_number">Enter the number</string>
+</resources>
