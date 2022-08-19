@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ewalle.data.ResourceResult
 import com.example.ewalle.databinding.FragmentHomeBinding
+import com.example.ewalle.domain.BalanceConverter
 
 
 class HomeFragment : Fragment() {
@@ -45,11 +46,8 @@ class HomeFragment : Fragment() {
 
             when (balance) {
                 is ResourceResult.Success -> {
-                    val copyBalance = balance.result
-                    val balanceAfterTransformation = copyBalance?.div(1000)
-                    val balaneString: String =
-                        "$balanceAfterTransformation,${copyBalance?.rem(1000)}"
-                    binding.tvBalance.text = balaneString.toString()
+                    val copyBalance = BalanceConverter.balanceConverter(balance.result)
+                    binding.tvBalance.text = copyBalance
                 }
                 is ResourceResult.Error -> TODO()
                 else -> {

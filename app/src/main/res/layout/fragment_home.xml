@@ -7,6 +7,10 @@
     android:background="@color/background_color"
     tools:context=".presentation.home.HomeFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,16 +31,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_services"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="6dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvServices"
             app:layout_constraintTop_toBottomOf="@+id/tvServices"
-            app:layout_constraintVertical_bias="0.0"
             app:spanCount="4"
             tools:listitem="@layout/service_item" />
 
@@ -201,4 +202,5 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
