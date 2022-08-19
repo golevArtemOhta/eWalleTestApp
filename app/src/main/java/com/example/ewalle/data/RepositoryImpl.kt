@@ -5,7 +5,7 @@ import com.example.ewalle.domain.Repository
 object RepositoryImpl : Repository {
 
     override fun getBalance(): ResourceResult<Long> {
-        return ResourceResult.Success(Balance.balanceList[0].balance)
+        return ResourceResult.Success(Balance.balance.balance)
     }
 
     override fun getFriendsList(): ResourceResult<List<Friend>> {

@@ -1,4 +1,4 @@
-package com.example.ewalle.presentation
+package com.example.ewalle.presentation.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

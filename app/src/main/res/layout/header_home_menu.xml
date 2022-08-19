@@ -30,7 +30,7 @@
             android:id="@+id/imAvatarDraver"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/ic_carol_avatar" />
 
     </androidx.cardview.widget.CardView>
 

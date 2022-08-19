@@ -9,8 +9,8 @@ android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:backgroundTint="@color/background_color"
-tools:context=".presentation.HomeActivity"
-android:id="@+id/draver">
+tools:context=".presentation.home.HomeActivity"
+    android:id="@+id/draver">
 
 
 <FrameLayout

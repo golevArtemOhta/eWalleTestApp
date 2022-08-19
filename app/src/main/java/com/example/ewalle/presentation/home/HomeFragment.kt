@@ -1,4 +1,4 @@
-package com.example.ewalle.presentation
+package com.example.ewalle.presentation.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,17 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ewalle.data.Friend
 import com.example.ewalle.data.ResourceResult
-import com.example.ewalle.data.ServiceButtonData
 import com.example.ewalle.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
-    var servicesItem: ResourceResult<List<ServiceButtonData>>? = null
-    var friendsItem: ResourceResult<List<Friend>>? = null
-    var balance: ResourceResult<Long>? = null
     lateinit var homeViewModel: HomeViewModel
     private val adapterService = ServiceButtonsAdapter()
     private val adapterFriend = FriendButtonsAdapter()
@@ -46,11 +41,11 @@ class HomeFragment : Fragment() {
 
         homeViewModel.request()
 
-        homeViewModel.balance.observe(activity as LifecycleOwner, Observer {
-            balance = it
+        homeViewModel.balance.observe(activity as LifecycleOwner, Observer { balance ->
+
             when (balance) {
                 is ResourceResult.Success -> {
-                    val copyBalance = (balance as ResourceResult.Success<Long>).result
+                    val copyBalance = balance.result
                     val balanceAfterTransformation = copyBalance?.div(1000)
                     val balaneString: String =
                         "$balanceAfterTransformation,${copyBalance?.rem(1000)}"
@@ -64,10 +59,10 @@ class HomeFragment : Fragment() {
         })
 
         homeViewModel.itemsFriends.observe(activity as LifecycleOwner, Observer {
-            friendsItem = it
+            friendsItem ->
             when (friendsItem) {
                 is ResourceResult.Success -> {
-                    adapterFriend.getFriendsButtonData((friendsItem as ResourceResult.Success<List<Friend>>).result)
+                    adapterFriend.getFriendsButtonData(friendsItem.result)
                     adapterFriend.notifyDataSetChanged()
                 }
                 is ResourceResult.Error -> TODO()
@@ -78,10 +73,10 @@ class HomeFragment : Fragment() {
         })
 
         homeViewModel.itemsServices.observe(activity as LifecycleOwner, Observer {
-            servicesItem = it
+            servicesItem ->
             when (servicesItem) {
                 is ResourceResult.Success -> {
-                    adapterService.getServiceButtonData((servicesItem as ResourceResult.Success<List<ServiceButtonData>>).result)
+                    adapterService.getServiceButtonData(servicesItem.result)
                     adapterService.notifyDataSetChanged()
                 }
                 is ResourceResult.Error -> TODO()
@@ -104,4 +99,6 @@ class HomeFragment : Fragment() {
         @JvmStatic
         fun newInstance() = HomeFragment()
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.ewalle.presentation
+package com.example.ewalle.presentation.other
 
 import android.os.Bundle
 import android.view.LayoutInflater

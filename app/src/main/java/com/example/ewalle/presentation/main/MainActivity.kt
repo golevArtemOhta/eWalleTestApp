@@ -1,25 +1,32 @@
-package com.example.ewalle.presentation
+package com.example.ewalle.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ewalle.data.RepositoryImpl
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.ewalle.data.ResourceResult
 import com.example.ewalle.databinding.ActivityMainBinding
-import com.example.ewalle.domain.LoginUseCase
+import com.example.ewalle.presentation.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    private val repository = RepositoryImpl
-    private val loginUseCase = LoginUseCase(repository)
-    val login = loginUseCase.login()
+    lateinit var mainViewModel: MainViewModel
+    var login: ResourceResult<Boolean>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        mainViewModel.request()
+        mainViewModel.stateLogin.observe(this, Observer{
+            login = it
+        })
 
         binding.imBtnSignIn.setOnClickListener {
             when (login) {
@@ -29,6 +36,13 @@ class MainActivity : AppCompatActivity() {
                     "Something went wrong",
                     Toast.LENGTH_LONG
                 ).show()
+                else -> {
+                    Toast.makeText(
+                        this,
+                        "Something went wrong",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
         binding.tvCreateAnAccount.setOnClickListener {
@@ -39,6 +53,13 @@ class MainActivity : AppCompatActivity() {
                     "Something went wrong",
                     Toast.LENGTH_LONG
                 ).show()
+                else -> {
+                    Toast.makeText(
+                        this,
+                        "Something went wrong",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }

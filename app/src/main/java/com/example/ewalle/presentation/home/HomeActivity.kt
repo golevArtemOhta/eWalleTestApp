@@ -1,19 +1,20 @@
-package com.example.ewalle.presentation
+package com.example.ewalle.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.example.ewalle.R
 import com.example.ewalle.databinding.ActivityHomeBinding
+import com.example.ewalle.presentation.other.BlankFragment
+import com.example.ewalle.presentation.main.MainActivity
 import com.google.android.material.navigation.NavigationView
-import kotlin.system.exitProcess
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var binding: ActivityHomeBinding
@@ -27,14 +28,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             openFragment(HomeFragment.newInstance(), null)
         }
 
-        val networkConnection = NetworkConnection(applicationContext)
-        networkConnection.observe(this, Observer { isConnected ->
-            if (isConnected) {
-                Toast.makeText(this, "Internet is connected", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "Internet is not connected", Toast.LENGTH_LONG).show()
-            }
-        })
+        val navigationView = findViewById<NavigationView>(com.example.ewalle.R.id.nav_view)
+        val exitButton = navigationView.getHeaderView(0).findViewById<View>(com.example.ewalle.R.id.imageViewExit) as ImageView
+        val logOutButton = navigationView.findViewById<AppCompatButton>(R.id.ButtonLogOut)
+        exitButton.setOnClickListener {
+            binding.draver.closeDrawer(GravityCompat.START)
+        }
+        logOutButton.setOnClickListener {
+            logOut()
+        }
     }
 
     private fun openFragment(fragment: Fragment, tagName: String?) {
@@ -79,9 +81,23 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 BlankFragment.newInstance(item.title.toString()),
                 "help"
             )
-            R.id.imageViewExit -> binding.draver.closeDrawer(GravityCompat.START)
         }
         binding.draver.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun logOut() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+
     }
 }
